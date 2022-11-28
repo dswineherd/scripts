@@ -1,6 +1,5 @@
 # scripts
-1 – SYSTEM INFORMATION
-# Display Linux system & hardware information
+#1 – SYSTEM INFORMATION
 uname -a
 uname -r
 cat /etc/*-release
