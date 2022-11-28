@@ -1,97 +1,64 @@
 # scripts
 1 – SYSTEM INFORMATION
-# Display Linux system information
+# Display Linux system & hardware information
 uname -a
-
-# Display kernel release information
 uname -r
-
-# Show which version of Red Hat installed
-cat /etc/redhat-release
-
-# Show how long the system has been running + load
+cat /etc/*-release
 uptime
-
-# Show system host name
 hostname
-
-# Display all local IP addresses of the host.
 hostname -I
-
-# Show system reboot history
 last reboot
-
-# Show the current date and time
 date
-
-# Show this month's calendar
 cal
-
-# Display who is online
 w
-
-# Who you are logged in as
 whoami
+
 2 – HARDWARE INFORMATION
-# Display messages in kernel ring buffer
+lshw
+lscpu
+lsblk
 dmesg
-
-# Display CPU information
 cat /proc/cpuinfo
-
-# Display memory information
 cat /proc/meminfo
-
-# Display free and used memory ( -h for human readable, -m for MB, -g for GB.)
 free -h
-
-# Display PCI devices
 lspci -tv
-
-# Display USB devices
 lsusb -tv
-
-# Display DMI/SMBIOS (hardware info) from the BIOS
 dmidecode
-
-# Show info about disk sda
+dmidecode -t memory
+dmidecode -t system
 hdparm -i /dev/sda
-
-# Perform a read speed test on disk sda
 hdparm -tT /dev/sda
-
-# Test for unreadable blocks on disk sda
 badblocks -s /dev/sda
+fdisk -l
+
 3 – PERFORMANCE MONITORING AND STATISTICS
-# Display and manage the top processes
+
 top
-
-# Interactive process viewer (top alternative)
 htop
-
-# Display processor related statistics
 mpstat 1
-
-# Display virtual memory statistics
 vmstat 1
-
-# Display I/O statistics
 iostat 1
-
-# Display the last 100 syslog messages  (Use /var/log/syslog for Debian based systems.)
 tail -100 /var/log/messages
-
-# Capture and display all packets on interface eth0
 tcpdump -i eth0
-
-# Monitor all traffic on port 80 ( HTTP )
 tcpdump -i eth0 'port 80'
 
-# List all open files on the system
+# Lsof
 lsof
-
-# List files opened by user
 lsof -u user
+
+# Ports
+ss -lntu
+ss -lntu | grep ':{PUERTO}'
+netstat -putona | grep {PUERTO}
+netstat -tplugn | grep :{PUERTO}
+nc -zv {IP} {PUERTO}
+nmap -sU -O {IP}
+nmap -p {PUERTO} {IP}
+nmap {IP_O_DOMINIO} -p {PUERTO} | grep -i tcp
+lsof -i :{PUERTO}
+lsof -i -P -n
+lsof -i -P -n | grep LISTEN
+telnet {IP_HOST} {PUERTO}
 
 # Display free and used memory ( -h for human readable, -m for MB, -g for GB.)
 free -h
