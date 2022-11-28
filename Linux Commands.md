@@ -1,4 +1,3 @@
-#UNDER CONSTRUCTION
 # Content <!-- omit in toc -->
 - [Basics](#basics)
   - [File Hierarchy Standard (FHS)](#file-hierarchy-standard-fhs)
@@ -751,21 +750,4 @@ localectl set-keymap ch                 # set keymap to ch (doesn't affect ssh s
 localectl set-x11-keymap ch             # set keymap to ch (doesn't affect ssh session)
 ```
 
-
-# Lsof
-lsof
-lsof -u user
-
-# Ports
-ss -lntu
-ss -lntu | grep ':{PUERTO}'
-netstat -putona | grep {PUERTO}
-netstat -tplugn | grep :{PUERTO}
-nc -zv {IP} {PUERTO}
-nmap -sU -O {IP}
-nmap -p {PUERTO} {IP}
-nmap {IP_O_DOMINIO} -p {PUERTO} | grep -i tcp
-lsof -i :{PUERTO}
-lsof -i -P -n
-lsof -i -P -n | grep LISTEN
-telnet {IP_HOST} {PUERTO}
+Credits by https://gist.github.com/khazeamo 
